@@ -469,6 +469,13 @@ describe('jsonDiff#applyChangeset', () => {
     expect(oldObj).toMatchObject(newObj);
     done();
   });
+
+	test('should add null', (done) => {
+		const old = { foo: 100 };
+		applyChangeset(old, [{type: Operation.ADD, key: 'bar', value: null}]);
+		expect(old).toMatchObject({ bar: null })
+		done()
+	})
 });
 
 describe('jsonDiff#revertChangeset', () => {

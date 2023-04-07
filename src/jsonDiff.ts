@@ -304,7 +304,7 @@ export const diff = (oldObj: any, newObj: any, embeddedObjKeys?: Dictionary<stri
 export const applyChangeset = (obj: any, changeset: Changeset) => {
   if (changeset) {
     changeset.forEach((change) =>
-      (change.value !== null && change.value !== undefined) || change.type === Operation.REMOVE
+      change.value !== undefined || change.type === Operation.REMOVE
         ? applyLeafChange(obj, change, change.embeddedKey)
         : applyBranchChange(obj[change.key], change)
     );
